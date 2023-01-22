@@ -7,43 +7,7 @@ body {
   background-color: #343d46;
 }
 
-a {
-  text-decoration: none;
-  
-  transition: .3s;
-}
-
-.logo-wrap {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  
-  font-size: 45px;
-  color: #f76695;
-}
-
-.logo__icon {
-  height: 32px;
-  margin-right: 10px;
-}
-
-.main {
-  margin-top: 50px;
-}
-
-.notes-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.btn-add {
-  margin-top: 50px;
+.note-btn {
   padding: 10px 50px;
   
   color: #ffffff;
@@ -56,7 +20,7 @@ a {
   transition: .3s;
 }
 
-.btn-add:hover {
+.note-btn:hover {
   box-shadow: 0 0 10px #f76695;
 }
 
@@ -73,6 +37,11 @@ a {
   transition: .3s;
 }
 
-.input:hover {
+.input::placeholder {
+  color: #cccccc;
+}
+
+.input:hover,
+.input:focus {
   box-shadow: 0 15px 10px -15px #f76695;
 }

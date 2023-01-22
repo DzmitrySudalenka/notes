@@ -1,14 +1,9 @@
 <script setup>
-import { useNotesStore } from '@/stores/notes'
-import Note from './Note.vue'
-
-const notesStore = useNotesStore()
+import NoteForm from './NoteForm.vue'
+import NotesList from './NotesList.vue'
 </script>
 
 <template>
-  <Note 
-    v-for='note of notesStore.notes'
-    :key='note.id'
-    :note='note'
-  />
+  <NoteForm />
+  <NotesList />
 </template>
