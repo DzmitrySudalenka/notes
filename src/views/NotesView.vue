@@ -6,8 +6,9 @@ import Notes from '../components/Notes.vue'
   <main class="main">
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col notes-wrap">
           <Notes />
+          <RouterLink to="/add" class="btn-add">Add new</RouterLink>
         </div>
       </div>
     </div>

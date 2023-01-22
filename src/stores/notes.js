@@ -5,13 +5,18 @@ export const useNotesStore = defineStore("notesStore", {
   state: () => ({
     notes: [
       {
-        id: 1,
+        id: 0,
         name: 'First note'
       },
       {
-        id: 2,
+        id: 1,
         name: 'Second note'
       }
     ]
-  })
+  }),
+  actions: {
+    addNote(name) {
+      this.notes.push({ id: this.notes.length, name: name })
+    }
+  }
 });
