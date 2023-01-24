@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useNotesStore = defineStore("notesStore", {
@@ -54,6 +53,11 @@ export const useNotesStore = defineStore("notesStore", {
   actions: {
     addNote(name) {
       this.notes.push({ id: this.nextNoteId++, name: name, nextTaskId: 0, tasks: [] })
+    },
+    removeNote(id) {
+      this.notes = this.notes.filter((note) => {
+        return note.id !== id;
+      })
     }
   }
-});
+})

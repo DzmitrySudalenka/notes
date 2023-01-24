@@ -1,5 +1,5 @@
 <script setup>
-
+import Modal from './components/Modal.vue'
 </script>
 
 <template>
@@ -14,9 +14,8 @@
   
   <main class="main">
     <div class="container">
-    
+      <Modal />
       <RouterView />
-    
     </div>
   </main>
 </template>

@@ -1,8 +1,6 @@
-# notes
+# Notes App
 
-Notes App
-
-## Project Setup
+### Project Setup
 
 ```sh
 npm install
