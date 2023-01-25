@@ -89,6 +89,11 @@ const showRemoveConfirmation = (task) => {
   align-items: center;
 }
 
+.task-item__text-wrap {
+  display: flex;
+  align-items: center;
+}
+
 .task-item__checkbox {
   margin-right: 10px;
 }
