@@ -13,51 +13,55 @@ const props = defineProps({
 const showRemoveConfirmation = () => {
   modal.open(
     'Remove note confirmation',
-    `Are you sure you want to remove note "${props.note.name}" ?`,
+    `Are you sure you want to remove note "${props.note.name}"?`,
     'Confirm',
-     () => notes.removeNote(props.note.id)
+    () => notes.removeNote(props.note.id)
   )
-}
-
-const removeNote = () => {
-  modal.show();
 }
 </script>
 
 <template>
-  <div class="note">
-    {{note.name}}
-    <TrashIcon class="btn-trash" @click="showRemoveConfirmation()" />
-  </div>
+  <RouterLink :to="{name: 'note', params: {id: note.id}}">
+    <div class="list-item">
+      <div class="list-item__name-wrap">
+        {{note.name}}
+        <TrashIcon class="btn-trash" @click.prevent="showRemoveConfirmation()" />
+      </div>
+      <div class="list-item__tasks-wrap">
+        <div
+          class="task-item"
+          v-for="task of note.tasks.slice(-2).reverse()"
+          :key="task.id"
+        >
+          <input class="task-item__checkbox" type="checkbox" :checked="task.completed" disabled>
+          {{task.text}}
+        </div>
+      </div>
+    </div>
+  </RouterLink>
 </template>
 
 <style scoped>
-.note {
+.list-item {
+  flex-direction: column;
+  
+  color: #f8f0e4;
+}
+
+.list-item__name-wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  
-  cursor: pointer;
-  border-radius: 5px;
-  
-  transition: .3s;
+  flex-grow: 1;
 }
 
-.note:hover {
-  background: rgba(255, 255, 255, .1);
+.task-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
 }
 
-.btn-trash {
-  height: 20px;
-  
-  opacity: 0;
-  fill: #f76695;
-  
-  transition: .3s;
-}
-
-.note:hover .btn-trash {
-  opacity: 1;
+.task-item__checkbox {
+  margin-right: 10px;
 }
 </style>

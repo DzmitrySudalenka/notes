@@ -4,6 +4,6 @@ import NotesList from './NotesList.vue'
 </script>
 
 <template>
-  <NoteForm />
+  <RouterLink to="/add" class="note-btn">Add new</RouterLink>
   <NotesList />
 </template>

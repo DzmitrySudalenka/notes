@@ -32,4 +32,8 @@ onMounted(() => {
 .modal-body {
   color: #343d46;
 }
+
+.modal-title {
+  font-weight: 700;
+}
 </style>

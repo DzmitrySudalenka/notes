@@ -7,7 +7,12 @@ body {
   background-color: #343d46;
 }
 
+a {
+  text-decoration: none;
+}
+
 .note-btn {
+  min-width: 164px;
   padding: 10px 50px;
   
   color: #ffffff;
@@ -44,4 +49,31 @@ body {
 .input:hover,
 .input:focus {
   box-shadow: 0 15px 10px -15px #f76695;
+}
+
+.list-item {
+  display: flex;
+  padding: 10px;
+  
+  cursor: pointer;
+  border-radius: 5px;
+  
+  transition: .3s;
+}
+
+.list-item:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
+.btn-trash {
+  height: 20px;
+  
+  opacity: 0;
+  fill: #f76695;
+  
+  transition: .3s;
+}
+
+.list-item:hover .btn-trash {
+  opacity: 1;
 }

@@ -8,9 +8,9 @@ const notesStore = useNotesStore()
 <template>
   <div class="notes-list">
     <NotesListItem
-      v-for='note of notesStore.notes'
-      :key='note.id'
-      :note='note'
+      v-for="note of notesStore.notes.slice().reverse()"
+      :key="note.id"
+      :note="note"
     />
   </div>
 </template>

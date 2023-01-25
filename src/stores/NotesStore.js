@@ -11,18 +11,18 @@ export const useNotesStore = defineStore("notesStore", {
         tasks: [
           {
             id: 1,
+            completed: true,
             text: 'First note First task',
-            completed: false
           },
           {
             id: 2,
-            text: 'First note Second task',
-            completed: true
+            completed: false,
+            text: 'First note Second task'
           },
           {
             id: 3,
-            text: 'First note Third task',
-            completed: false
+            completed: true,
+            text: 'First note Third task'
           }
         ]
       },
@@ -33,26 +33,27 @@ export const useNotesStore = defineStore("notesStore", {
         tasks: [
           {
             id: 1,
-            text: 'Second note First task',
-            completed: false
+            completed: false,
+            text: 'Second note First task'
           },
           {
             id: 2,
-            text: 'Second note Second task',
-            completed: true
+            completed: true,
+            text: 'Second note Second task'
           },
           {
             id: 3,
-            text: 'Second note Third task',
-            completed: false
+            completed: false,
+            text: 'Second note Third task'
           }
         ]
       }
     ]
   }),
   actions: {
-    addNote(name) {
-      this.notes.push({ id: this.nextNoteId++, name: name, nextTaskId: 0, tasks: [] })
+    addNote(note) {
+      note.id = this.nextNoteId++
+      this.notes.push(note)
     },
     removeNote(id) {
       this.notes = this.notes.filter((note) => {
