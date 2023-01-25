@@ -1,17 +1,13 @@
 <script setup>
 import { reactive } from 'vue'
-import router from '@/router'
-import { useNotesStore } from '@/stores/NotesStore'
 import { useModalStore } from '@/stores/ModalStore'
 import TrashIcon from './icons/TrashIcon.vue'
 
-const notesStore = useNotesStore()
 const modal = useModalStore()
 
-const newNote = reactive({
-  name: '',
-  nextTaskId: 0,
-  tasks: []
+const props = defineProps({
+  note: {},
+  action: {}
 })
 
 const newTask = reactive({
@@ -20,23 +16,16 @@ const newTask = reactive({
   text: ''
 })
 
-const addNote = () => {
-  if (newNote.name !== '') {
-    notesStore.addNote(newNote)
-    router.push('/')
-  }
-}
-
 const addTask = () => {
   if (newTask.text !== '') {
-    newTask.id = newNote.nextTaskId++
-    newNote.tasks.push({...newTask})
+    newTask.id = props.note.nextTaskId++
+    props.note.tasks.push({...newTask})
     newTask.text = ''
   }
 }
 
 const removeTask = (id) => {
-  newNote.tasks = newNote.tasks.filter((task) => {
+  props.note.tasks = props.note.tasks.filter((task) => {
     return task.id !== id;
   })
 }
@@ -53,28 +42,31 @@ const showRemoveConfirmation = (task) => {
 
 <template>
   <div class="form">
-    <input
-      type="text"
-      class="input form__input"
-      v-model="newNote.name"
-      placeholder="New note name"
-    >
-    <button class="note-btn form__btn" @click="addNote()">Add note</button>
-  </div>
-  <div class="form task-form">
-    <input
-      type="text"
-      class="input form__input"
-      v-model="newTask.text"
-      placeholder="New task name"
-    >
-    <button class="note-btn form__btn" @click="addTask()">Add task</button>
-  </div>
-  <div class="tasks">
-    <div class="list-item" v-for="task of newNote.tasks.slice().reverse()" :key="task.id">
-      {{task.text}}
-      <TrashIcon class="btn-trash" @click="showRemoveConfirmation(task)" />
+      <input
+        type="text"
+        class="input form__input"
+        v-model="note.name"
+        placeholder="Note name"
+      >
+      <button class="note-btn form__btn" @click="action.callback">{{action.label}}</button>
     </div>
+    <div class="form task-form">
+      <input
+        type="text"
+        class="input form__input"
+        v-model="newTask.text"
+        placeholder="New task name"
+      >
+      <button class="note-btn form__btn" @click="addTask()">Add task</button>
+    </div>
+    <div class="tasks">
+      <div class="list-item" v-for="task of note.tasks.slice().reverse()" :key="task.id">
+        <div class="task-item__text-wrap">
+          <input class="task-item__checkbox" type="checkbox" v-model="task.completed">
+          {{task.text}}
+        </div>
+        <TrashIcon class="btn-trash" @click="showRemoveConfirmation(task)" />
+      </div>
   </div>
 </template>
 
@@ -95,5 +87,9 @@ const showRemoveConfirmation = (task) => {
 .list-item {
   justify-content: space-between;
   align-items: center;
+}
+
+.task-item__checkbox {
+  margin-right: 10px;
 }
 </style>

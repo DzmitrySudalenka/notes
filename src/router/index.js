@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Notes from '../components/Notes.vue'
-import NoteForm from '../components/NoteForm.vue'
+import NoteAdd from '../components/NoteAdd.vue'
 import Note from '../components/Note.vue'
 
 const router = createRouter({
@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/add',
       name: 'add',
-      component: NoteForm
+      component: NoteAdd
     },
     {
       path: '/note/:id',
