@@ -19,7 +19,8 @@ const notesStore = useNotesStore()
 
 <style scoped>
 .notes-list {
-  min-width: 430px;
+  width: 100%;
+  max-width: 430px;
   margin-top: 50px;
 }
 </style>

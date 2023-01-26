@@ -2,10 +2,8 @@ import { defineStore } from 'pinia'
 import { useLocalStorage } from '@vueuse/core'
 import { demoData } from './NotesStoreDemoData'
 
-const state = localStorage.getItem('state') ? localStorage.getItem('state') : demoData
-
 export const useNotesStore = defineStore("notesStore", {
-  state: () => (useLocalStorage('state', {state})),
+  state: () => (useLocalStorage('state', demoData)),
   actions: {
     addNote(note) {
       note.id = this.nextNoteId++

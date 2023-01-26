@@ -136,7 +136,8 @@ const redo = () => {
 
 .btns-wrap {
   display: flex;
-  min-width: 467px;
+  width: 100%;
+  max-width: 467px;
   margin-top: 50px;
 }
 
@@ -157,7 +158,8 @@ const redo = () => {
 }
 
 .tasks {
-  min-width: 467px;
+  width: 100%;
+  max-width: 467px;
   margin-top: 50px;
 }
 
@@ -185,5 +187,36 @@ const redo = () => {
 
 .btn-trash {
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form__btn {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px 0 0;
+  }
+  
+  .btns-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .btns-wrap_single .note-btn,
+  .btns-wrap_multiple .note-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .btns-wrap .note-btn {
+    margin-top: 20px;
+  }
 }
 </style>
