@@ -1,12 +1,5 @@
 :root {
-  --form-control-color: #f76695;
-  --form-control-disabled: #959495;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+  --color-main: #f76695;
 }
 
 body {
@@ -66,7 +59,6 @@ a {
   display: flex;
   padding: 10px;
   
-  cursor: pointer;
   border-radius: 5px;
   
   transition: .3s;

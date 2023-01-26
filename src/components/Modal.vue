@@ -20,7 +20,7 @@ onMounted(() => {
         </div>
         <div class="modal-body">{{modal.body}}</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" @click="modal.doAction()">{{modal.actionLbl}}</button>
+          <button type="button" class="btn btn-primary" @click="modal.doAction">{{modal.actionLbl}}</button>
         </div>
       </div>
     </div>

@@ -23,7 +23,7 @@ const action = {label: 'Add note', callback: addNote}
 </script>
 
 <template>
-  <NoteForm :note="newNote" :action="action" />
+  <NoteForm :note="newNote" :action="action" :showRemoveBtn="false" />
 </template>
 
 <style scoped>

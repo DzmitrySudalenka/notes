@@ -27,7 +27,7 @@ const action = {label: 'Save', callback: save}
 </script>
 
 <template>
-  <NoteForm :note="note" :action="action" />
+  <NoteForm :note="note" :action="action" :showRemoveBtn="true" />
 </template>
 
 <style scoped>

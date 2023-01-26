@@ -8,10 +8,12 @@ const notesStore = useNotesStore()
 <template>
   <div class="notes-list">
     <NotesListItem
+      v-if="notesStore.notes.length"
       v-for="note of notesStore.notes.slice().reverse()"
       :key="note.id"
       :note="note"
     />
+    <div v-else>No notes</div>
   </div>
 </template>
 

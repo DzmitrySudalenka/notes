@@ -1,14 +1,35 @@
 <script setup>
+import { watchEffect } from 'vue'
+import { useModalStore } from '@/stores/ModalStore'
+import router from '@/router'
+import { useRoute } from 'vue-router'
 import Modal from './components/Modal.vue'
+
+const modal = useModalStore()
+
+const route = useRoute()
+
+const checkPath = () => {
+  if (route.name === 'note' || route.name === 'add') {
+    modal.open(
+      'Undo edit',
+      'Are you sure you want to cancel edit without saving?',
+      'Confirm',
+      () => router.push('/')
+    )
+  } else {
+    router.push('/')
+  }
+}
 </script>
 
 <template>
   <header class="header">
     <div class="container">
-      <RouterLink to="/" class="logo">
+      <div class="logo" @click="checkPath">
         <img class="logo__icon" src="@/assets/logo.svg" alt="logo" width="32" height="32" />
         Notes
-      </RouterLink>
+      </div>
     </div>
   </header>
   
@@ -36,6 +57,7 @@ import Modal from './components/Modal.vue'
   color: #f76695;
   
   text-decoration: none;
+  cursor: pointer;
 }
 
 .logo__icon {
